@@ -54,5 +54,5 @@ while(not end):
 #change
 #git status
 #git add <file>
-#git commit -c "mrdgr"
+#git commit -m "mrdgr"
 #git push origin
