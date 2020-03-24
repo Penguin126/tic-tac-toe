@@ -52,3 +52,7 @@ while(not end):
     printDisplay()
 
 #change
+#git status
+#git add <file>
+#git commit -c "mrdgr"
+#git push origin
