@@ -50,24 +50,49 @@ def isLegal(x,y,symbol,board):
         else:
             return True
 
+def drawWinningLine(sr,sc,line):
+    srow = sr*10+1
+    scol = sc*10+1
+    if line=="diagonal":
+        if sr==0 and sc==0:
+            for i in range(30):
+                display[srow+i-1][scol+i-1]="\\\\"
+        elif sr==0 and sc==2:
+            for i in range(29):
+                display[srow+i][(scol+8)-i]="//"
+    if line=="vertical":
+        for i in range(30):
+            display[i][scol+4]="|"
+    if line=="horizontal":
+        for i in range(30):
+            display[srow+4][i]="="
+
 def checkEnd():
     for i in range(3):
         if board[i][0]=='x' and board[i][1]=='x' and board[i][2]=='x':
+            drawWinningLine(i, 0, "horizontal")
             return "x"
         elif board[i][0]=='o' and board[i][1]=='o' and board[i][2]=='o':
+            drawWinningLine(i, 0, "horizontal")
             return "o"
     for i in range(3):
         if board[0][i]=='x' and board[1][i]=='x' and board[2][i]=='x':
+            drawWinningLine(0, i, "vertical")
             return "x"
         elif board[0][i]=='o' and board[1][i]=='o' and board[2][i]=='o':
+            drawWinningLine(0, i, "vertical")
             return "o"
     if board[0][0]=='x' and board[1][1]=='x' and board[2][2]=='x':
+        drawWinningLine(0,0,"diagonal")
         return "x"
     elif board[0][0]=='o' and board[1][1]=='o' and board[2][2]=='o':
+        drawWinningLine(0, 0, "diagonal")
         return "o"
     if board[0][2]=='x' and board[1][1]=='x' and board[2][0]=='x':
+        drawWinningLine(0, 2, "diagonal")
         return "x"
     elif board[0][2]=='o' and board[1][1]=='o' and board[2][0]=='o':
+        drawWinningLine(0, 2, "diagonal")
         return  "o"
     if count>=9:
         return " "
@@ -89,12 +114,21 @@ while(True):
             print("invalid input!")
     count+=1
     if checkEnd() == " ":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Tie!")
         break
     elif checkEnd() == "x":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Player x wins!")
         break
     elif checkEnd() == "o":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Player o wins!")
         break
     while(True):
@@ -111,12 +145,21 @@ while(True):
             print("invalid input!")
     count+=1
     if checkEnd() == " ":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Tie!")
         break
     elif checkEnd() == "x":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Player x wins!")
         break
     elif checkEnd() == "o":
+        for i in range(4):
+            print()
+        printDisplay()
         print("Player o wins!")
         break
 
